@@ -1,6 +1,10 @@
 <?php
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Start session to access $_SESSION['user_id']
-require_once('../includes/auth.php'); 
+require_once('../includes/auth.php');
 include '../config/dbconnecter.php';
 
 header('Content-Type: application/json');
