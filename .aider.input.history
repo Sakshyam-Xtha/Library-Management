@@ -1,0 +1,127 @@
+
+# 2026-03-25 21:44:40.556706
++n
+
+# 2026-03-25 21:46:16.620275
++N
+
+# 2026-03-25 21:46:31.571355
++Y
+
+# 2026-03-25 21:47:07.111373
++N
+
+# 2026-03-25 21:47:39.157242
++no
+
+# 2026-03-25 21:47:54.976845
++N
+
+# 2026-03-25 21:48:07.481109
++no
+
+# 2026-03-25 21:48:10.717095
++hi
+
+# 2026-03-25 21:50:57.780140
++no
+
+# 2026-03-25 21:55:09.633452
++hi
+
+# 2026-03-25 21:56:12.931628
++no
+
+# 2026-03-25 21:56:27.988689
++hi
+
+# 2026-03-25 22:01:25.927503
++can you view the files of the folder
+
+# 2026-03-25 22:09:26.753844
++no
+
+# 2026-03-25 22:10:14.840423
++hey whats wrong in the user profile file as the application banner is not showing even when the role in database is written in lowercase letters
+
+# 2026-03-25 22:11:12.862897
++no
+
+# 2026-03-25 22:11:34.167835
++hey whats wrong in the user profile file as the application banner is not show
++> ing even when the role in database is written in lowercase letters 
+
+# 2026-03-25 22:12:24.340495
++no
+
+# 2026-03-25 22:13:08.365751
++can you see all the files. If yes can you describe what variable stores the dbconnection in dbconneter.php
+
+# 2026-03-25 22:16:42.576921
++/add user_profile.php
+
+# 2026-03-25 22:16:46.475022
++no
+
+# 2026-03-25 22:17:02.291817
++/add /user/user_profile.php
+
+# 2026-03-25 22:17:10.158726
++no
+
+# 2026-03-25 22:17:18.419073
++/add index.php
+
+# 2026-03-25 22:17:31.773828
++/add /user/user-profile.php
+
+# 2026-03-25 22:17:35.784880
++no
+
+# 2026-03-25 22:17:54.281897
++/add user-profile.php
+
+# 2026-03-25 22:17:58.594805
++no
+
+# 2026-03-25 22:18:06.920673
++/add user
+
+# 2026-03-25 22:18:50.738572
++hey whats wrong with the user/user-profile.php application banner
+
+# 2026-03-25 22:20:00.961388
++/user/user-dashboard file is showing data not accoring to the logged in user id
+
+# 2026-03-25 22:20:10.975910
++why /user/user-dashboard file is showing data not accoring to the logged in user id
+
+# 2026-03-25 22:22:45.270059
++in the user/user-dashboard.php the session userid should be used to show the data in stat cards and the currenly borrowed section
+
+# 2026-03-25 22:24:02.998855
++in the user/user-profile.php the apply banner is not being shown
+
+# 2026-03-25 22:26:28.182922
++the user/user-profile.php file has an apply banner at line 117 and its not being loaded when the userrole is 'user'
+
+# 2026-03-25 22:28:43.590963
++its still not working so check once again
+
+# 2026-03-25 22:31:10.891808
++can you make it such that the role 'user' only see the application banner saying apply now
+
+# 2026-03-27 21:13:28.921929
++no
+
+# 2026-03-27 21:13:48.812639
++/add user
+
+# 2026-03-27 21:14:18.921927
++/add actions/save_theme.php
+
+# 2026-03-27 21:14:38.103755
++/add assets/js/lms-shared.js
+
+# 2026-03-27 21:15:01.468715
++why is the theme flashing so much when i run it from my hosted domain
