@@ -1,0 +1,27 @@
+name: 🚀 Deploy LMS to InfinityFree
+
+on:
+  push:
+    branches:
+      - main # This triggers the deploy every time you push to the main branch
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files to InfinityFree
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Points to the root htdocs on InfinityFree
+          server-dir: ./htdocs/
+          # This prevents GitHub from deleting your .env or manually uploaded files
+          dangerous-clean-slate: false
+          # Optional: exclude the config folder if you want to manage it manually
+          # exclude: |
+          #   **/config/.env
