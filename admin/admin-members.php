@@ -532,7 +532,9 @@ function acceptApp(appId) {
 
   let formdata = {
     status: "approved",
-    id: a.id
+    id: a.id,
+    role: role,   // Add selected role
+    color: color  // Add selected color
   }
 
   fetch('../actions/review_application.php',{
