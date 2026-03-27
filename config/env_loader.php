@@ -18,6 +18,8 @@ function loadEnv($path) {
         // Put into environment variables and $_ENV superglobal
         putenv(sprintf('%s=%s', $name, $value));
         $_ENV[$name] = $value;
+        // Log each variable loaded for debugging
+        error_log("Env_loader: Set " . $name . "=" . (str_contains(strtolower($name), 'pass') ? '[REDACTED]' : $value));
     }
     return true;
 }
