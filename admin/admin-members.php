@@ -290,9 +290,8 @@ function renderPendingStrip() {
         <div class="app-meta">${a.applicant_email} · Applied ${a.applied} · <span class="badge badge-accent" style="font-size:.7rem">${a.type}</span></div>
       </div>
       <div class="app-actions">
-        <button class="btn btn-outline" style="padding:.35rem .85rem;font-size:.8rem" onclick="openReviewApp('${a.id}')">👁 Review</button>
         <button class="btn btn-primary" style="padding:.35rem .85rem;font-size:.8rem" onclick="acceptApp('${a.id}')">✅ Accept</button>
-        <button class="action-btn del" onclick="rejectApp('${a.id}')" title="Reject">✕</button>
+        <button class="btn btn-danger" style="padding:.35rem .85rem;font-size:.8rem" onclick="rejectApp('${a.id}')">✕ Reject</button>
       </div>
     </div>`).join('');
 }
