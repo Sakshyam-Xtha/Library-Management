@@ -151,7 +151,7 @@ input, select, textarea { font-family: 'DM Sans', sans-serif; }
 /* ── Topbar ────────────────────────────────────────── */
 .topbar {
   height: var(--topbar-h); background: var(--surface); border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; padding: 0 2rem; gap: 1rem;
+  display: flex; align-items: center; padding: 0 clamp(1rem, 4vw, 2rem); gap: 1rem; /* Adjust padding for smaller screens */
   position: sticky; top: 0; z-index: 100;
 }
 .topbar-menu-btn {

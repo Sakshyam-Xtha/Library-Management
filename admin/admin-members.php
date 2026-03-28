@@ -16,6 +16,10 @@ $extraCss = <<<'CSS'
 /* ── Table tweaks ── */
 .member-avatar-sm { width:34px; height:34px; border-radius:50%; display:grid; place-items:center; font-size:.75rem; font-weight:700; color:#fff; flex-shrink:0; }
 .td-member { display:flex; align-items:center; gap:.65rem; }
+
+@media (max-width: 500px) {
+  #rv-details { grid-template-columns: 1fr !important; } /* Force single column for review details */
+}
 CSS;
 ?>
 <!DOCTYPE html>
