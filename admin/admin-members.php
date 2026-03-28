@@ -97,7 +97,7 @@ CSS;
     <div class="table-toolbar">
       <span class="table-title">👥 Member Directory</span>
     </div>
-    <div style="overflow-x:auto">
+    <div class="table-responsive-wrapper">
       <table>
         <thead>
           <tr>
