@@ -526,15 +526,28 @@ function openReviewApp(appId) {
 function acceptApp(appId) {
   const a = pendingApps.find(x => x.id === appId);
   if (!a) return;
-  const role  = document.getElementById('rv-role').value;
-  const color = document.getElementById('rv-color').value;
-  const initials = a.applicant_name.split(' ').map(n=>n[0]).join('').slice(0,2).toUpperCase();
+
+  const rvRoleEl  = document.getElementById('rv-role');
+  const rvColorEl = document.getElementById('rv-color');
+  const rvNoteEl  = document.getElementById('rv-note');
+
+  // Determine role: use selected role if available (from review view), otherwise default based on type
+  const roleMap = { Student:'Student', Faculty:'Faculty', General:'Member' };
+  const role    = rvRoleEl ? rvRoleEl.value : (roleMap[a.type] || 'Member');
+
+  // Determine color: use selected color if available, otherwise default
+  // Default to Gold (#c8a45a,#f39c12) if no color is explicitly selected or element not present
+  const color   = rvColorEl ? rvColorEl.value : '#c8a45a,#f39c12'; 
+
+  // Determine note: use entered note if available, otherwise empty string
+  const note    = rvNoteEl ? rvNoteEl.value.trim() : '';
 
   let formdata = {
     status: "approved",
     id: a.id,
-    role: role,   // Add selected role
-    color: color  // Add selected color
+    role: role,
+    color: color,
+    note: note // Include note in formdata
   }
 
   fetch('../actions/review_application.php',{
@@ -548,22 +561,26 @@ function acceptApp(appId) {
       closeApplicationModal();
       LMS.syncData();
     }else{
-      toast('failed', '❌', `Error occurred!`);
+      toast('error', '❌', data.message || 'Error occurred during acceptance.');
     }
   })
   .catch (err => {
     console.error("Fetch error:", err);
     toast('error', '❌', 'Failed to connect to server.');
   });
-  
 }
 
 function rejectApp(appId) {
   const a = pendingApps.find(x => x.id === appId);
-  pendingApps = pendingApps.filter(x => x.id !== appId);
+  if (!a) return;
+
+  const rvNoteEl  = document.getElementById('rv-note');
+  const note      = rvNoteEl ? rvNoteEl.value.trim() : '';
+
   let formdata = {
     status: "rejected",
-    id: a.id
+    id: a.id,
+    note: note // Include note in formdata
   }
 
   fetch('../actions/review_application.php',{
@@ -573,11 +590,11 @@ function rejectApp(appId) {
   }).then(r => r.json())
   .then(data => {
     if (data.status === 'success'){
-      toast('warning', '✕', `Application from ${a?.name} rejected.`);
+      toast('warning', '✕', `Application from ${a.applicant_name} rejected.`);
       closeApplicationModal();
       LMS.syncData();
     }else{
-      toast('failed', '❌', `Error occurred!`);
+      toast('error', '❌', data.message || 'Error occurred during rejection.');
     }
   })
   .catch (err => {
