@@ -154,4 +154,5 @@ window.LMS = {
 };
 
 
+LMS.initTheme(); // Initialize theme immediately to prevent flashing
 document.addEventListener('DOMContentLoaded', () => LMS.initPage());
