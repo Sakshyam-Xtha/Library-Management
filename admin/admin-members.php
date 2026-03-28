@@ -253,6 +253,9 @@ CSS;
 
 
 <?php include '../includes/footer.php'; ?>
+
+<div class="overlay" id="overlay"></div>
+
 <script>
 /* ── State ── */
 let members     = [];
