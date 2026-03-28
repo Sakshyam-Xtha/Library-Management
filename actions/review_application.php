@@ -16,8 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($data) {
         $app_id = $data['id'] ?? 0;
         $status = $data['status'] ?? "";
-        $assigned_role = $data['role'] ?? null; // New: get assigned role
-        $assigned_color = $data['color'] ?? null; // New: get assigned color
+        $assigned_role = $data['role'] ?? null; // Get assigned role
 
         if ($app_id === 0) {
             $response['message'] = 'Application ID is missing.';
@@ -29,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $con->begin_transaction();
 
                 if ($status === 'approved') {
-                    if (empty($assigned_role) || empty($assigned_color)) {
-                        $response['message'] = 'Assigned role or color is missing for approved application.';
+                    if (empty($assigned_role)) {
+                        $response['message'] = 'Assigned role is missing for approved application.';
                         $con->rollback();
                     } else {
                         // 1. Get the user_id from the application
@@ -43,14 +42,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $stmt->close();
 
                         if ($app && $app['user_id']) {
-                            // 2. Update user role and color
-                            $stmt = $con->prepare("UPDATE users SET role = ?, color = ? WHERE id = ?");
-                            if (!$stmt) throw new Exception("Prepare failed for updating user role/color: " . $con->error);
-                            $stmt->bind_param("ssi", $assigned_role, $assigned_color, $app['user_id']);
+                            // 2. Update user role
+                            $stmt = $con->prepare("UPDATE users SET role = ? WHERE id = ?");
+                            if (!$stmt) throw new Exception("Prepare failed for updating user role: " . $con->error);
+                            $stmt->bind_param("si", $assigned_role, $app['user_id']);
                             $stmt->execute();
                             if ($stmt->affected_rows === 0) {
-                                // This could mean the user already has this role/color or user_id is bad
-                                error_log("No rows updated for user_id {$app['user_id']} with role {$assigned_role} and color {$assigned_color}");
+                                error_log("No rows updated for user_id {$app['user_id']} with role {$assigned_role}");
                             }
                             $stmt->close();
 

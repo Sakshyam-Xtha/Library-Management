@@ -161,17 +161,6 @@ CSS;
           </select>
         </div>
         <div class="form-group">
-          <label>Assign Avatar Colour</label>
-          <select class="form-control" id="rv-color">
-            <option value="#1a4a8a,#2563eb">🔵 Navy Blue</option>
-            <option value="#1a7a4a,#27ae60">🟢 Forest Green</option>
-            <option value="#c0392b,#e74c3c">🔴 Crimson</option>
-            <option value="#6b21a8,#9333ea">🟣 Purple</option>
-            <option value="#c8a45a,#f39c12">🟡 Gold</option>
-            <option value="#0369a1,#0ea5e9">🔷 Sky Blue</option>
-          </select>
-        </div>
-        <div class="form-group">
           <label>Admin Note (optional)</label>
           <textarea class="form-control" id="rv-note" rows="2" placeholder="Internal note about this member…" style="resize:vertical"></textarea>
         </div>
@@ -528,16 +517,11 @@ function acceptApp(appId) {
   if (!a) return;
 
   const rvRoleEl  = document.getElementById('rv-role');
-  const rvColorEl = document.getElementById('rv-color');
   const rvNoteEl  = document.getElementById('rv-note');
 
   // Determine role: use selected role if available (from review view), otherwise default based on type
   const roleMap = { Student:'Student', Faculty:'Faculty', General:'Member' };
   const role    = rvRoleEl ? rvRoleEl.value : (roleMap[a.type] || 'Member');
-
-  // Determine color: use selected color if available, otherwise default
-  // Default to Gold (#c8a45a,#f39c12) if no color is explicitly selected or element not present
-  const color   = rvColorEl ? rvColorEl.value : '#c8a45a,#f39c12'; 
 
   // Determine note: use entered note if available, otherwise empty string
   const note    = rvNoteEl ? rvNoteEl.value.trim() : '';
@@ -546,7 +530,6 @@ function acceptApp(appId) {
     status: "approved",
     id: a.id,
     role: role,
-    color: color,
     note: note // Include note in formdata
   }
 
