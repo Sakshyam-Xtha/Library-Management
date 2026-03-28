@@ -134,8 +134,8 @@ window.LMS = {
     const sb = document.getElementById('sidebar');
     const ov = document.getElementById('overlay');
     if (mb && sb && ov) {
-      mb.onclick = () => { sb.classList.toggle('open'); ov.classList.toggle('show'); };
-      ov.onclick = () => { sb.classList.remove('open'); ov.classList.remove('show'); };
+      mb.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('show'); });
+      ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('show'); });
     }
 
     this.syncData();
