@@ -467,6 +467,7 @@ function renderAppModalList() {
       </div>
       <div style="display:flex;gap:.4rem;flex-shrink:0">
         <button class="btn btn-outline" style="padding:.3rem .75rem;font-size:.78rem" onclick="openReviewApp('${a.id}')">Review</button>
+        <button class="btn btn-primary" style="padding:.3rem .75rem;font-size:.78rem" onclick="acceptApp('${a.id}');renderAppModalList()">✅ Accept</button>
         <button class="action-btn del" onclick="rejectApp('${a.id}');renderAppModalList()" title="Reject">✕</button>
       </div>
     </div>`).join('');
