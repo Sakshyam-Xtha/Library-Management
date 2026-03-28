@@ -127,16 +127,10 @@ window.LMS = {
       }
     });
 
-    // sidebar toggle button may be called `menu-btn` (modern pages) or
-    // `hamburger` (home page uses the same element for mobile nav). look for
-    // either so the listener doesn't silently fail.
-    const mb = document.getElementById('menu-btn') || document.getElementById('hamburger');
-    const sb = document.getElementById('sidebar');
-    const ov = document.getElementById('overlay');
-    if (mb && sb && ov) {
-      mb.addEventListener('click', () => { sb.classList.toggle('open'); ov.classList.toggle('show'); });
-      ov.addEventListener('click', () => { sb.classList.remove('open'); ov.classList.remove('show'); });
-    }
+    // The menu button functionality is intentionally disabled per user request.
+    // The `viewport` meta tag in includes/head.php already ensures proper scaling.
+    // If the site still appears "zoomed in", the issue is likely with specific
+    // CSS properties (e.g., fixed widths, large font sizes) and not the viewport configuration.
 
     this.syncData();
   },
